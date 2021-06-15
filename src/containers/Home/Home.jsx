@@ -9,7 +9,6 @@ const Home = ({ navigator, params }) => {
   const onSelect = () => {
     const page = getRoute('groupSelect');
 
-    console.log('page', page);
     navigator.pushPage(page);
   }
 
@@ -24,12 +23,16 @@ const Home = ({ navigator, params }) => {
         <Toolbar onBack={onBack} />
       )}
     >
-      <Loader size={24} />
-      <IconTetrad width="30" height={30} />
+      <div className="container-home">
+        HOME
+        <div className="container-home__title">
+          TITLE
+        </div>
 
-      <Button modifier="button-main-node" onClick={onSelect}>
-        ТЫК
-      </Button>
+        <Button onClick={onSelect} modifier="material">
+          ТЫК
+        </Button>
+      </div>
     </Page>
   );
 }
