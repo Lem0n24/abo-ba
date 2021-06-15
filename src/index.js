@@ -5,7 +5,7 @@ import PrompInstall from './prompInstall';
 
 import {fateEffect} from 'utils/fateEffect'
 
-import App from './App';
+import { App } from 'components'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 import 'onsenui/css/onsenui.css';
