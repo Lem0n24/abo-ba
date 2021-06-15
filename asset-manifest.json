@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/abo-ba/static/css/main.26f9e6b0.chunk.css",
+    "main.js": "/abo-ba/static/js/main.e6ba2d38.chunk.js",
+    "main.js.map": "/abo-ba/static/js/main.e6ba2d38.chunk.js.map",
+    "runtime-main.js": "/abo-ba/static/js/runtime-main.18c320a8.js",
+    "runtime-main.js.map": "/abo-ba/static/js/runtime-main.18c320a8.js.map",
+    "static/css/2.42173931.chunk.css": "/abo-ba/static/css/2.42173931.chunk.css",
+    "static/js/2.d8072bc9.chunk.js": "/abo-ba/static/js/2.d8072bc9.chunk.js",
+    "static/js/2.d8072bc9.chunk.js.map": "/abo-ba/static/js/2.d8072bc9.chunk.js.map",
+    "index.html": "/abo-ba/index.html",
+    "service-worker.js": "/abo-ba/service-worker.js",
+    "service-worker.js.map": "/abo-ba/service-worker.js.map",
+    "static/css/2.42173931.chunk.css.map": "/abo-ba/static/css/2.42173931.chunk.css.map",
+    "static/css/main.26f9e6b0.chunk.css.map": "/abo-ba/static/css/main.26f9e6b0.chunk.css.map",
+    "static/js/2.d8072bc9.chunk.js.LICENSE.txt": "/abo-ba/static/js/2.d8072bc9.chunk.js.LICENSE.txt",
+    "static/media/onsenui.css": "/abo-ba/static/media/ionicons.ef35f15c.woff",
+    "static/media/logo.103b5fa1.svg": "/abo-ba/static/media/logo.103b5fa1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.18c320a8.js",
+    "static/css/2.42173931.chunk.css",
+    "static/js/2.d8072bc9.chunk.js",
+    "static/css/main.26f9e6b0.chunk.css",
+    "static/js/main.e6ba2d38.chunk.js"
+  ]
+}
