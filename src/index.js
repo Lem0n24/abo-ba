@@ -8,23 +8,14 @@ import {fateEffect} from 'utils/fateEffect'
 import { App } from 'components'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
-import 'onsenui/css/onsenui.css';
-import 'onsenui/css/onsen-css-components.css';
-
 const root = document.getElementById('root');
 
 ons.disableAutoStyling();
 
 ons.ready(() => {
-  render(
-    <>
-      <App />
-      <PrompInstall />
-    </>,
-    root
-    );
+  render(<App />, root);
 
-    fateEffect('root-loader')
+  fateEffect('root-loader')
 })
 
 
