@@ -13,7 +13,13 @@ const root = document.getElementById('root');
 ons.disableAutoStyling();
 
 ons.ready(() => {
-  render(<App />, root);
+  render(
+    <>
+      <App />
+      <PrompInstall />
+    </>,
+    root
+  );
 
   fateEffect('root-loader')
 })
