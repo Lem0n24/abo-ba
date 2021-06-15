@@ -1,3 +1,4 @@
+import ons from 'onsenui'
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
@@ -53,9 +54,29 @@ export function register(config) {
 }
 
 function registerValidSW(swUrl, config) {
+// When the user asks to refresh the UI, we'll need to reload the window
+navigator.serviceWorker.addEventListener('message', event => {
+  if (!event.data) {
+    return
+  }
+    switch (event.data) {
+      case 'reload-window':
+        window.location.reload()
+         break
+      
+    default:
+      // NOOP
+       break
+    }
+  })
+
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
+      //autoupdate PWA
+      setInterval(() => {
+        registration.update().then(res => console.info('FORCE UPDATE - resolve'))
+      }, config.timeoutUpdate)      
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {
@@ -67,6 +88,16 @@ function registerValidSW(swUrl, config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
+              ons.notification
+                .confirm(`Доступна новая версия приложения.`, {
+                  title: 'Обновление приложения',
+                  buttonLabels: ['Отмена', 'Обновить'],
+                })
+                .then(res => {
+                  if (res === 1) {
+                    installingWorker.postMessage({ type: 'SKIP_WAITING' })
+                  }
+              });
               console.log(
                 'New content is available and will be used when all ' +
                   'tabs for this page are closed. See https://cra.link/PWA.'
