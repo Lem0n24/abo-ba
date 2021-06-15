@@ -1,5 +1,6 @@
 import {
   Home,
+  GroupSelect,
 } from 'containers';
 
 import { v1 } from 'uuid';
@@ -11,6 +12,11 @@ export const ROUTES = {
     title: 'Расписание занятий',
     component: Home,
     key: 'home',
+  },
+  groupSelect: {
+    title: '',
+    component: GroupSelect,
+    key: 'groupSelect',
   }
 };
 

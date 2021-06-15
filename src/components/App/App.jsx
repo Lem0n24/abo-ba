@@ -2,7 +2,8 @@ import React, { useRef } from 'react';
 import { Navigator } from 'react-onsenui';
 
 import { ErrorBoundary } from 'components';
-import { getRoute, initialRouteKey } from 'routes';
+import { getRoute } from 'routes';
+
 import 'styles';
 
 const initRoute = getRoute('home');

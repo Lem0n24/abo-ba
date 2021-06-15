@@ -1,3 +1,16 @@
-body {
-  background-color: red;
+.page {
+  &__background {
+    z-index: -1;
+    top: 0 !important;
+  }
+
+  &__content {
+    position: static;
+  }
+
+  &--home,
+  &--group-select {
+    display: flex;
+    flex-flow: column;
+  }
 }
