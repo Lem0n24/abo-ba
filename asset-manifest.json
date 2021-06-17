@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/abo-ba/static/css/main.92da196c.chunk.css",
+    "main.css": "/abo-ba/static/css/main.16880f83.chunk.css",
     "main.js": "/abo-ba/static/js/main.25918f5d.chunk.js",
     "main.js.map": "/abo-ba/static/js/main.25918f5d.chunk.js.map",
     "runtime-main.js": "/abo-ba/static/js/runtime-main.18c320a8.js",
@@ -12,15 +12,16 @@
     "service-worker.js": "/abo-ba/service-worker.js",
     "service-worker.js.map": "/abo-ba/service-worker.js.map",
     "static/css/2.7c775695.chunk.css.map": "/abo-ba/static/css/2.7c775695.chunk.css.map",
-    "static/css/main.92da196c.chunk.css.map": "/abo-ba/static/css/main.92da196c.chunk.css.map",
+    "static/css/main.16880f83.chunk.css.map": "/abo-ba/static/css/main.16880f83.chunk.css.map",
     "static/js/2.491469fc.chunk.js.LICENSE.txt": "/abo-ba/static/js/2.491469fc.chunk.js.LICENSE.txt",
-    "static/media/onsenui.css": "/abo-ba/static/media/ionicons.ef35f15c.woff"
+    "static/media/onsenui.css": "/abo-ba/static/media/ionicons.ef35f15c.woff",
+    "static/media/index.less": "/abo-ba/static/media/back.8de1c0b6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.18c320a8.js",
     "static/css/2.7c775695.chunk.css",
     "static/js/2.491469fc.chunk.js",
-    "static/css/main.92da196c.chunk.css",
+    "static/css/main.16880f83.chunk.css",
     "static/js/main.25918f5d.chunk.js"
   ]
 }
