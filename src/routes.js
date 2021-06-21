@@ -5,7 +5,7 @@ import {
 
 import { v1 } from 'uuid';
 
-export const initialRouteKey = 'home';
+export const initialRouteKey = 'groupSelect';
 
 export const ROUTES = {
   home: {

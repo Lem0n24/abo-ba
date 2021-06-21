@@ -52,59 +52,40 @@
     box-shadow: none;
   }
 
-  &__back-btn {
-    // position: absolute;
-    // top: 12px;
-    // left: 10px;
+  &__calendar {
+    position: absolute;
+    top: 18px;
+    right: 15px;
 
-    @media (min-width: 876px) {
-      display: none;
+    .ant-picker {
+      border: none
     }
 
-    ons-button {
-      width: 48px;
-      height: 48px;
+    .ant-picker-input {
+      input {
+        display: none;
+      }
 
       svg {
-        fill: #232323;
+        width: 25px;
+        height: 25px;
       }
-      background-color: #fff;
     }
   }
 
-  &__loading {
-    height: 8px;
-    overflow-x: hidden;
-    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
-      visibility 300ms linear 0ms;
+  &__title {
+    width: 50%;
 
-    @media (min-width: 876px) {
-      padding-top: 96px;
+    ons-button {
+      width: 100%;
+      flex-direction: column !important;
+      background-color: #fff !important;
+      color: #232323 !important;
     }
 
-    &:after {
-      position: absolute;
-      height: inherit;
-
-      content: '';
-      border-radius: 12px;
-      background-color: rgba(255, 102, 23, 0.85);
-      animation: increase 2s infinite;
-    }
-
-    &:before {
-      position: absolute;
-      height: inherit;
-
-      content: '';
-      border-radius: 12px;
-      background-color: rgba(255, 102, 23, 0.85);
-      animation: decrease 2s 0.5s infinite;
-    }
-
-    &--completed {
-      visibility: hidden;
-      opacity: 0;
+    &_week {
+      font-size: 12px;
+      font-weight: normal;
     }
   }
 }

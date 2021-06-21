@@ -1,65 +1,97 @@
 import React, { useEffect, useState } from 'react';
 import { Page, Button } from 'react-onsenui';
+import { Select } from 'antd';
 
-import { Toolbar, BottomSheet } from 'components';
+import { Toolbar, Loader } from 'components';
+import { groupsJson } from 'constant';
+import { getRoute } from 'routes';
 
-const GroupSelect = ({ navigator, params }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [arr, setArr] = useState([]);
+const { Option } = Select;
 
-  console.log(arr);
+const GroupSelect = ({ navigator }) => {
+  const [groups, setGroups] = useState(null);
+  const [selectedGroupId, setSelectedGroupId] = useState(null);
 
   const onBack = () => {
     navigator.popPage();
   };
 
-  const onOpen = () => {
-    setIsOpen(true);
-
-    setArr([1, 2, 3])
-  }
-
   useEffect(() => {
-    console.log('Выполнился effect');
+    setGroups(groupsJson);
   }, []);
 
-  const onClose = () => {
-    setIsOpen(false);
-  }
+  const onHome = () => {
+    const page = getRoute('home', { id: selectedGroupId });
 
-  const footer = () => (
-    <Button modifier="button-main-node" onClick={onClose}>
-      Закрыть модалку
-    </Button>
-  )
+    navigator.replacePage(page);
+  };
+
+  const onChangeHandler = (groupId) => {
+    setSelectedGroupId(groupId);
+  };
 
   return (
     <Page
       modifier="group-select"
-      renderToolbar={() => (
-        <Toolbar onBack={onBack} />
+      // renderToolbar={() => (
+      //   <Toolbar onBack={onBack} />
+      // )}
+      renderFixed={() => (
+        <div className="page-group-select__upload-container">
+          <div className="page-group-select__upload-container_btn">
+            <Button modifier="button-main-node">
+              Загрузить расписание
+            </Button>
+          </div>
+        </div>
       )}
     >
-      <div className="home-container">
-        This is Select
+      <div className="page-group-select">
+        {
+          !groups ? (
+            <div className="page-group-select__loader">
+              <Loader />
+            </div>
+          ) : (
+            <div className="page-group-select__content">
+              <div className="page-group-select__title">
+                Выберите группу
+              </div>
 
-        <Button modifier="button-main-node" onClick={onOpen}>
-          Открыть модалку
-        </Button>
+              <div className="page-group-select__select-container">
+                <Select
+                  showSearch
+                  onSearch={(event) => console.log(event)}
+                  placeholder="Выбрать группу"
+                  className="page-group-select__select-container_select"
+                  onChange={onChangeHandler}
+                  filterOption={(input, option) =>
+                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  {
+                    groups.map((group) => (
+                      <Option value={group.id}>
+                        {group.name}
+                      </Option>
+                    ))
+                  }
+                </Select>
+              </div>
+
+              <div className="page-group-select__btn-show">
+                <Button
+                  modifier="button-main-node"
+                  onClick={onHome}
+                  disabled={!selectedGroupId}
+                >
+                  Показать расписание
+                </Button>
+              </div>
+            </div>
+          )
+        }
       </div>
-
-      <BottomSheet
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <div>
-          Я модальное окно!
-
-          <Button modifier="button-main-node" onClick={onClose}>
-            Закрыть модалку
-          </Button>
-        </div>
-      </BottomSheet>
     </Page>
   )
 };

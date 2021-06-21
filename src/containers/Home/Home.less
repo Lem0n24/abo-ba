@@ -1,7 +1,50 @@
-.container-home {
-  color: red;
+.page-home {
+  padding: 8px;
 
   &__title {
-    color: green
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+
+    margin-bottom: 36px;
+  }
+
+  &__lessons {
+
+    &_item {
+      box-sizing: border-box;
+      padding: 8px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+
+      background-color: #fff;
+      border-radius: 12px;
+
+      .lesson-time {
+        margin-left: 12px;
+        margin-right: 24px;
+        font-weight: bold;
+      }
+
+      .lesson-name {
+        .name {
+          width: 100%;
+          overflow: hidden;
+          display: -webkit-box;
+
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+
+          font-size: 18px;
+          line-height: 24px;
+          font-weight: bold;
+        }
+
+        .audit {
+          color: #9497AA;
+        }
+      }
+    }
   }
 }

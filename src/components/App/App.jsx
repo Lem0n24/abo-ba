@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 import { Navigator } from 'react-onsenui';
 
 import { ErrorBoundary } from 'components';
-import { getRoute } from 'routes';
+import { getRoute, initialRouteKey } from 'routes';
 
 import 'styles';
 
-const initRoute = getRoute('home');
+const initRoute = getRoute(initialRouteKey);
 
 const App = () => {
   const navigatorEl = useRef(null);
