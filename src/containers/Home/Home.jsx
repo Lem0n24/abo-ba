@@ -37,8 +37,6 @@ const Home = ({ navigator, params }) => {
     findGroup();
   }, []);
 
-  console.log(moment().day());
-
   const renderLesson = (lesson) => {
     const isExist = !!lesson.odd
 
