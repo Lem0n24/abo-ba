@@ -18,11 +18,15 @@ const Toolbar = (props) => {
     setSelectedDay(moment(dateString))
   };
 
+  const _onBack = () => {
+    localStorage.removeItem('savedGroup');
+    onBack();
+  };
+
   return (
     <RootToolbar className="toolbar-container">
-      
       <div className="toolbar-container__title">
-          <Button onClick={onBack} modifier="button-main-node__groupSelect">
+          <Button onClick={_onBack} modifier="button-main-node__groupSelect">
             <div >
               {title}
             </div>

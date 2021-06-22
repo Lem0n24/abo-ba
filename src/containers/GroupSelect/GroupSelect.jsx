@@ -18,10 +18,6 @@ const GroupSelect = ({ navigator }) => {
     navigator.popPage();
   };
 
-  useEffect(() => {
-    setGroups(groupsJson);
-  }, []);
-
   const onHome = () => {
     const page = getRoute('home', { id: selectedGroupId });
 
@@ -30,31 +26,52 @@ const GroupSelect = ({ navigator }) => {
 
   const onChangeHandler = (groupId) => {
     setSelectedGroupId(groupId);
+
+    localStorage.setItem('savedGroup', JSON.stringify({ id: groupId }))
   };
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('savedGroup'));
+
+    setTimeout(() => {
+      if (savedData) {
+        const page = getRoute('home', { id: savedData.id });
+
+        navigator.replacePage(page);
+      } else {
+        setGroups(groupsJson);
+      }
+    }, 500);
+  }, []);
 
   return (
     <Page
       modifier="group-select"
-      // renderToolbar={() => (
-      //   <Toolbar onBack={onBack} />
-      // )}
-      renderFixed={() => (
-        <div className="page-group-select__upload-container">
-          <div className="page-group-select__upload-container_btn">
-            <Button modifier="button-main-node">
-              Загрузить расписание
-            </Button>
+      renderFixed={() => {
+        if (!groups) {
+          return null;
+        }
+
+        return (
+          <div className="page-group-select__upload-container">
+            <div className="page-group-select__upload-container_btn">
+              <Button modifier="button-main-node">
+                Загрузить расписание
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      }}
     >
-      
+
       <div className="page-group-select">
-        <img src={logowthname} className="page-group-select__logo" />
+        <div className="page-group-select__logo_container">
+          <img src={logowthname} className="page-group-select__logo" />
+        </div>
         {
           !groups ? (
             <div className="page-group-select__loader">
-              <Loader />
+              <Loader color="#fff" />
             </div>
           ) : (
             <div className="page-group-select__content">

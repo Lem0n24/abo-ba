@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigator } from 'react-onsenui';
 
 import { ErrorBoundary } from 'components';
