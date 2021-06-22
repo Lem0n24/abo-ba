@@ -1,7 +1,3 @@
-import g from '../groups.json';
-
-export const groupsJson = g.groups;
-
 export const lessonTime = [
   '9:00, 10:35',
   '10:45, 12:20',

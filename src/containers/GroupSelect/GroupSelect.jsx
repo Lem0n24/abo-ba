@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Page, Button } from 'react-onsenui';
-import { Select } from 'antd';
+import { Select, notification } from 'antd';
+import axios from 'axios';
 
 import logowthname from 'image/logowthname.png';
 
 import { Toolbar, Loader } from 'components';
-import { groupsJson } from 'constant';
 import { getRoute } from 'routes';
 
 const { Option } = Select;
@@ -13,12 +13,11 @@ const { Option } = Select;
 const GroupSelect = ({ navigator }) => {
   const [groups, setGroups] = useState(null);
   const [selectedGroupId, setSelectedGroupId] = useState(null);
-
-  const onBack = () => {
-    navigator.popPage();
-  };
+  const [loading, setLoading] = useState(true);
 
   const onHome = () => {
+    localStorage.setItem('savedGroup', JSON.stringify({ id: selectedGroupId }));
+
     const page = getRoute('home', { id: selectedGroupId });
 
     navigator.replacePage(page);
@@ -26,22 +25,34 @@ const GroupSelect = ({ navigator }) => {
 
   const onChangeHandler = (groupId) => {
     setSelectedGroupId(groupId);
+  };
 
-    localStorage.setItem('savedGroup', JSON.stringify({ id: groupId }))
+  const getGroups = async () => {
+    setLoading(true);
+
+    try {
+      const { data } = await axios.get('https://awesome-node-project.herokuapp.com/getAllGroups');
+
+      setGroups(data);
+    } catch (error) {
+      localStorage.removeItem('savedGroup');
+
+      notification.error({ message: 'Не удалось получить список групп' })
+    }
+
+    setLoading(false);
   };
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('savedGroup'));
 
-    setTimeout(() => {
-      if (savedData) {
-        const page = getRoute('home', { id: savedData.id });
+    if (savedData) {
+      const page = getRoute('home', { id: savedData.id });
 
-        navigator.replacePage(page);
-      } else {
-        setGroups(groupsJson);
-      }
-    }, 500);
+      navigator.replacePage(page);
+    } else {
+      getGroups();
+    }
   }, []);
 
   return (
@@ -69,7 +80,7 @@ const GroupSelect = ({ navigator }) => {
           <img src={logowthname} className="page-group-select__logo" />
         </div>
         {
-          !groups ? (
+          loading || !groups ? (
             <div className="page-group-select__loader">
               <Loader color="#fff" />
             </div>

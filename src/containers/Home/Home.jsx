@@ -1,10 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Buuton, Page } from 'react-onsenui';
+import { Page } from 'react-onsenui';
 import moment from 'moment';
+import axios from 'axios';
+import { notification } from 'antd';
 
 
 import { Loader, Toolbar } from 'components';
-import { groupsJson, lessonTime } from 'constant';
+import { lessonTime } from 'constant';
 import { getRoute } from 'routes';
 
 const weekDays = moment.weekdays();
@@ -14,6 +16,7 @@ const Home = ({ navigator, params }) => {
 
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedDay, setSelectedDay] = useState(moment());
+  const [loading, setLoading] = useState(true);
 
   const weekParams = useMemo(() => {
     const weekNumber = selectedDay.week();
@@ -28,14 +31,30 @@ const Home = ({ navigator, params }) => {
     navigator.replacePage(page);
   };
 
-  const findGroup = () => {
-    const find = groupsJson.find((group) => group.id === id);
 
-    setSelectedGroup(find);
+  const getGroupInfo = async () => {
+    setLoading(true);
+
+    try {
+      const { data } = await axios.get(`https://awesome-node-project.herokuapp.com/groupInfo/${id}`);
+
+      setSelectedGroup(data);
+    } catch (error) {
+      localStorage.removeItem('savedGroup');
+
+      notification.error({ message: 'Не удалось получить расписание' })
+      setTimeout(() => {
+        onBack();
+      }, 1000);
+    }
+
+    setLoading(false);
   };
 
   useEffect(() => {
-    findGroup();
+    setTimeout(() => {
+      getGroupInfo();
+    }, 1000);
   }, []);
 
   const renderLesson = (lesson) => {
@@ -87,8 +106,8 @@ const Home = ({ navigator, params }) => {
       )}
     >
       {
-        !selectedGroup ? (
-          <div>
+        loading || !selectedGroup ? (
+          <div className="page-home__loader">
             <Loader />
           </div>
         ) : (
@@ -98,7 +117,7 @@ const Home = ({ navigator, params }) => {
             </div>
             <div className="page-home__lessons">
               {
-                selectedGroup.lessons[selectedDay.day() - 1].map((lesson) => (
+                selectedGroup.lessons[selectedDay.day() - 1]?.map((lesson) => (
                   renderLesson(lesson)
                 ))
               }
