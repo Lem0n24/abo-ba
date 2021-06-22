@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Button, Buuton, Page } from 'react-onsenui';
 import moment from 'moment';
 
+
 import { Loader, Toolbar } from 'components';
 import { groupsJson, lessonTime } from 'constant';
 import { getRoute } from 'routes';
@@ -95,7 +96,6 @@ const Home = ({ navigator, params }) => {
             <div className="page-home__title">
               {`${weekDays[selectedDay.day()]} / ${selectedDay.format('DD.MM')}`}
             </div>
-
             <div className="page-home__lessons">
               {
                 selectedGroup.lessons[selectedDay.day() - 1].map((lesson) => (

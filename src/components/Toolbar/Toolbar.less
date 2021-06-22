@@ -1,7 +1,9 @@
 .toolbar {
   position: static !important;
   z-index: 300;
+  
 }
+
 
 .p-24 {
   padding: 24px;
@@ -17,9 +19,9 @@
 .toolbar  {
   flex-direction: column;
   margin-bottom: 8px;
-  min-height: 72px;
+  min-height: 80px;
 
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
   background-image: none;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -45,6 +47,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+
 
   &--without-margin {
     border-radius: 0;
@@ -56,36 +60,43 @@
     position: absolute;
     top: 18px;
     right: 15px;
+    
 
     .ant-picker {
-      border: none
+      border: none;
+      background-color: rgba(255, 255, 0, 0);
     }
 
     .ant-picker-input {
       input {
         display: none;
+        
       }
 
       svg {
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
       }
     }
   }
 
   &__title {
-    width: 50%;
+    width: 70%;
 
     ons-button {
       width: 100%;
       flex-direction: column !important;
-      background-color: #fff !important;
-      color: #232323 !important;
+      background-color: rgba(255, 255, 255, 0) !important;
+      color: #ffffff !important;
+      margin-top: 8%;
+      
     }
 
     &_week {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: normal;
+      letter-spacing: 0pt;
+      
     }
   }
 }

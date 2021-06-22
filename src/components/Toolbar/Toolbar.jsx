@@ -3,6 +3,7 @@ import { Toolbar as RootToolbar, Button } from 'react-onsenui';
 import { DatePicker, ConfigProvider } from 'antd';
 import moment from 'moment';
 import locale from 'antd/lib/locale/ru_RU';
+import logo from '../../image/logo.png'
 
 const Toolbar = (props) => {
   const {
@@ -19,21 +20,21 @@ const Toolbar = (props) => {
 
   return (
     <RootToolbar className="toolbar-container">
+      
       <div className="toolbar-container__title">
-        <Button onClick={onBack} modifier="button-main-node">
-          <div>
-            {title}
-          </div>
+          <Button onClick={onBack} modifier="button-main-node__groupSelect">
+            <div >
+              {title}
+            </div>
 
-          <div className="toolbar-container__title_week">
-            {
-              weekIsOdd
-              ? 'Нечетная'
-              : 'Четная'
-            }
-          </div>
-        </Button>
-
+            <div className="toolbar-container__title_week">
+              {
+                weekIsOdd
+                ? 'нечетная неделя'
+                : 'четная неделя'
+              }
+            </div>
+          </Button>
         <div className="toolbar-container__calendar">
           <ConfigProvider locale={locale}>
             <DatePicker
