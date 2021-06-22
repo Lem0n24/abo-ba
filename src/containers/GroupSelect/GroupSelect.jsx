@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Page, Button } from 'react-onsenui';
 import { Select } from 'antd';
 
+import logowthname from 'image/logowthname.png';
+
 import { Toolbar, Loader } from 'components';
 import { groupsJson } from 'constant';
 import { getRoute } from 'routes';
@@ -46,7 +48,9 @@ const GroupSelect = ({ navigator }) => {
         </div>
       )}
     >
+      
       <div className="page-group-select">
+        <img src={logowthname} className="page-group-select__logo" />
         {
           !groups ? (
             <div className="page-group-select__loader">

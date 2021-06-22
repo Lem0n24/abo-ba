@@ -3,7 +3,7 @@ import { Toolbar as RootToolbar, Button } from 'react-onsenui';
 import { DatePicker, ConfigProvider } from 'antd';
 import moment from 'moment';
 import locale from 'antd/lib/locale/ru_RU';
-import logo from '../../image/logo.png'
+
 
 const Toolbar = (props) => {
   const {
